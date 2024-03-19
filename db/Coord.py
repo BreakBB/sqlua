@@ -19,7 +19,7 @@ class Coord():
             mapBorders = mapBordersWotLK # TODO: cata version
         for mapSet in mapBorders:
             zone = int(mapSet[0])
-            if (not (zoneId == False)) and (zone != zoneId):
+            if ((not (zoneId == False)) and (zone != zoneId)) or zone == 0:
                 continue
             mId = int(mapSet[2])
             x1 = float(mapSet[5])
@@ -35,7 +35,7 @@ class Coord():
         for instance in instanceIds:
             zoneID = int(instance[0])
             mapID = int(instance[2])
-            if (mapId == mapID):
+            if mapId == mapID and zoneID != 0:
                 self.zoneList[zoneID] = (-1, -1)
                 self.pointList.append((zoneID, -1, -1))
                 self.isInstance = True
